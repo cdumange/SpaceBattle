@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl8c2a2ir03bn"]
+
+[ext_resource type="Script" path="res://scripts/Ship.cs" id="1_haffg"]
+[ext_resource type="PackedScene" uid="uid://da4v3udrxfall" path="res://models/cube.glb" id="2_dukjs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mg5eq"]
+size = Vector3(2.03088, 2.0293, 10.251)
+
+[node name="Ship" type="Node3D"]
+script = ExtResource("1_haffg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00164795, -0.0012207, -0.0576019)
+shape = SubResource("BoxShape3D_mg5eq")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="cube" parent="Pivot" instance=ExtResource("2_dukjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00501776, 0.00672078, -0.000920296)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]

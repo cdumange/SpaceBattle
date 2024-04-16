@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkqd88e7o07qs"]
+
+[ext_resource type="PackedScene" uid="uid://bl8c2a2ir03bn" path="res://scenes/ship.tscn" id="1_ljesg"]
+
+[node name="Main" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.613538, -0.579619, 0.536295, 0.469846, 0.813798, 0.34202, -0.634677, 0.042134, 0.771628, 1.96284, 3.50314, -2.03047)
+light_color = Color(0.498039, 0.180392, 0.384314, 1)
+light_energy = 4.352
+light_indirect_energy = 2.676
+light_volumetric_fog_energy = 1.152
+directional_shadow_split_1 = 0.119
+directional_shadow_max_distance = 332.5
+
+[node name="Ship" parent="." instance=ExtResource("1_ljesg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.15478)
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPosition"]
+transform = Transform3D(0.826175, -0.138249, 0.546188, -0.00644073, 0.967047, 0.254517, -0.563376, -0.213794, 0.79806, 14.7973, 9.9647, 16.1159)
+fov = 79.8003
