@@ -14,10 +14,11 @@ directional_shadow_split_1 = 0.119
 directional_shadow_max_distance = 332.5
 
 [node name="Ship" parent="." instance=ExtResource("1_ljesg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.15478)
+transform = Transform3D(1, 0, 0, 0, 0.987688, -0.156434, 0, 0.156434, 0.987688, 0, 0, 0)
 
 [node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021592, 2.02998, 14.4519)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPosition"]
-transform = Transform3D(0.826175, -0.138249, 0.546188, -0.00644073, 0.967047, 0.254517, -0.563376, -0.213794, 0.79806, 14.7973, 9.9647, 16.1159)
+transform = Transform3D(1, 0, 0, 0, 0.975837, 0.218501, 0, -0.218501, 0.975837, 0.0592438, 0.783794, 3.37662)
 fov = 79.8003

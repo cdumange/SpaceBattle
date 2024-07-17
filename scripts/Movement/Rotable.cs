@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public partial class Rotable : Movable
+public partial class Rotable : GravityLikeMouvement
 {
 
 	private Vector2? lastMousePos;
-	public Rotable(float accelerationSpeed) : base(accelerationSpeed) { }
+	public Rotable(Vector3 accelerationSpeed) : base(accelerationSpeed) { }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,8 +23,8 @@ public partial class Rotable : Movable
 			if (sumDelta != 0)
 			{
 				GD.Print($"oldX {lastMousePos.Value.X} - newX: {mpov.X} - delta: {xDelta} - acceleration factor: {xDelta / sumDelta}");
-				base.xRotationSpeed += base._accelerationSpeed * (yDelta / sumDelta);
-				base.yRotationSpeed += base._accelerationSpeed * (xDelta / sumDelta);
+				base.RotationSpeed.X += base._accelerationSpeed.X * (yDelta / sumDelta);
+				base.RotationSpeed.Y += base._accelerationSpeed.Y * (xDelta / sumDelta);
 			}
 		}
 		lastMousePos = mpov;
@@ -35,8 +35,8 @@ public partial class Rotable : Movable
 		var mpov = GetViewport().GetMousePosition();
 		var display = GetViewport().GetVisibleRect().Size;
 
-		base.xRotationSpeed += base._accelerationSpeed * ((mpov.X - display.X / 2) / display.X);
-		base.yRotationSpeed += base._accelerationSpeed * ((mpov.Y - display.Y / 2) / display.Y);
+		base.RotationSpeed.X += base._accelerationSpeed.X * ((mpov.X - display.X / 2) / display.X);
+		base.RotationSpeed.Y += base._accelerationSpeed.Y * ((mpov.Y - display.Y / 2) / display.Y);
 
 	}
 
@@ -61,9 +61,7 @@ public partial class Rotable : Movable
 
 		if (Input.IsMouseButtonPressed(MouseButton.Right))
 		{
-			base.xRotationSpeed = 0;
-			base.yRotationSpeed = 0;
-			base.zRotationSpeed = 0;
+			base.RotationSpeed = new Vector3();
 		}
 
 		base._PhysicsProcess(delta);
